@@ -32,6 +32,11 @@ class AboutUs extends Component {
       peoplesArray.push(person);
     }
 
+    this.setState({
+      peoples: peoplesArray
+    });
+
+    console.log("wowowowowothis.state.peoples[0].name: " + this.state.peoples[0].name);
 
   })
   .catch((error) => {
@@ -40,7 +45,10 @@ class AboutUs extends Component {
 }
   render() {
     console.log("Render!!!");
-
+    var renderPeoples = this.state.peoples;
+    if (renderPeoples.length > 0) {
+      console.log("Well well well:" + renderPeoples[0].name);
+    }
     /*
     * My dilemma:
     * I want to be able to load the list of names in componentsDidMount
@@ -55,8 +63,8 @@ class AboutUs extends Component {
               'lindascott',
               'elsiehamilton',
               'jaidenvan de kerkhof',
-              'pablogil']
-    var people = peoplesA.map((value, index) => {
+              'pablogil'];
+    var people = renderPeoples.map((value, index) => {
       return (
         <li key={index}>{value}</li>
         );
