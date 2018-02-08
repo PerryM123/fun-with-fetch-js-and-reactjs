@@ -4,31 +4,40 @@ import UserResults from './UserResults'
 
 class AboutUs extends Component {
   constructor(props) {
+    console.log("constructor!!!");
     super(props);
     const stuff  = this.props.userCount;
-    var people = [];
     this.state = ({
-      loading: true,
-      gender: "",
-      name: "",
-      email: "",
-      img_url: "",
-      amount: stuff
+      peoples: ""
     });
   }
   componentDidMount() {
+    console.log("componentDidMount!!!");
     setTimeout(() => this.setState({ loading: false }), 15);
     const url = 'https://randomuser.me/api/?results=' + this.props.userCount;
 
     fetch(url) // Call the fetch function passing the url of the API as a parameter
   .then(response => response.json())
   .then(data => {
-    console.log("someData" + data);
+    var peoplesArray = [];
+    var person = "";
+    for (var x = 0; x < this.props.userCount; x++) {
+      var person = {
+        gender: data.results[x].gender,
+        name: data.results[x].name.first + data.results[x].name.last,
+        email: data.results[x].email,
+        img_url: data.results[x].picture.thumbnail
+      };
+      console.log(x + ") person's name: " + person.name);
+      peoplesArray.push(person);
+    }
+
+
+    let people => peoplesArray.map(value, index) {
+      <li key="index">{value}</li>
+    }
     this.setState({
-      gender: data.results[0].gender,
-      name: data.results[0].name.first + data.results[0].name.last,
-      email: data.results[0].email,
-      img_url: data.results[0].picture.thumbnail
+      peoplesMap: peoplesArray
     });
 
   })
@@ -37,12 +46,16 @@ class AboutUs extends Component {
   });
 }
   render() {
-    var userMap = ['dog', 'cat', 'dude'];
-    var userList = userMap.map((value, index) => {
-      return (
-        <li key={index}>{value}</li>
-      );
-    });
+    console.log("Render!!!");
+
+    // About Map iterator parameters
+    // 1st parameter will always be the value of the index
+    // 2nd parameter will always be the value's index
+    // var userList = tempArray.map((value, index) => {
+    //   return (
+    //     <li key={index}>{value}</li>
+    //   );
+    // });
     const { loading } = this.state;
     if(loading) { // if your component doesn't have to wait for an async action, remove this block 
       return null; // render null when app is not ready
@@ -55,7 +68,7 @@ class AboutUs extends Component {
         <p>Name: {this.state.name}</p>
         <p>Email: {this.state.email}</p>
         <p><img src={this.state.img_url}/></p>*/}
-        <ul>{userList} </ul>
+        <ul>___{tempArray[0].name}___</ul>
         <UserResults mapper={this.userMap} />
       </div>
     );
