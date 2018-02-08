@@ -33,13 +33,6 @@ class AboutUs extends Component {
     }
 
 
-    let people => peoplesArray.map(value, index) {
-      <li key="index">{value}</li>
-    }
-    this.setState({
-      peoplesMap: peoplesArray
-    });
-
   })
   .catch((error) => {
     console.log("There was an error", error);
@@ -47,6 +40,28 @@ class AboutUs extends Component {
 }
   render() {
     console.log("Render!!!");
+
+    /*
+    * My dilemma:
+    * I want to be able to load the list of names in componentsDidMount
+    * but there seems to be an error happening with this code happening NOT
+    * in render()
+    */
+    var peoplesA = ['sofiamøller',
+              'mariusjoly',
+              'mildredarmstrong',
+              'jeffreyfowler',
+              'alexandrewilliams',
+              'lindascott',
+              'elsiehamilton',
+              'jaidenvan de kerkhof',
+              'pablogil']
+    var people = peoplesA.map((value, index) => {
+      return (
+        <li key={index}>{value}</li>
+        );
+    });
+
 
     // About Map iterator parameters
     // 1st parameter will always be the value of the index
@@ -68,7 +83,7 @@ class AboutUs extends Component {
         <p>Name: {this.state.name}</p>
         <p>Email: {this.state.email}</p>
         <p><img src={this.state.img_url}/></p>*/}
-        <ul>___{tempArray[0].name}___</ul>
+        <ul>___{people}___</ul>
         <UserResults mapper={this.userMap} />
       </div>
     );
