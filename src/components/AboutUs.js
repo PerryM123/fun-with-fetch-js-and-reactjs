@@ -54,6 +54,10 @@ class AboutUs extends Component {
     * I want to be able to load the list of names in componentsDidMount
     * but there seems to be an error happening with this code happening NOT
     * in render()
+    *
+    *Possible fixes:
+    *-https://stackoverflow.com/questions/30803168/data-map-is-not-a-function
+    *-https://forum.freecodecamp.org/t/react-cant-access-a-property-of-an-object-stored-in-state/138169
     */
     var peoplesA = ['sofiamøller',
               'mariusjoly',
