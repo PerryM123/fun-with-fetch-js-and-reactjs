@@ -12,7 +12,7 @@ class Main extends Component {
           <Route exact path='/login' component={Login}/>
           <Route exact path='/' component={Home}/>
           <Route exact path='/profile' component={UserProfile}/>
-          <Route exact path='/about' component={() => <AboutUs userCount={10} />}/>
+          <Route exact path='/about' component={() => <AboutUs userCount={25} />}/>
         </Switch>
       </main>
     );

@@ -1,0 +1,10 @@
+.unordered-list {
+  text-align: left;
+  padding: 0 40px;
+}
+
+.unordered-list li {
+  padding: 10px 0;
+  border-bottom: 1px dashed;
+}
+
